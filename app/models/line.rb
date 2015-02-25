@@ -1,37 +1,27 @@
 class Line
-require 'pry'
-  STOPS = []
-
+  require 'pry'
   attr_accessor :station, :add_origin, :add_destination
   attr_reader  :line_stop_num
 
   def initialize
     @station = station
     @user = user
-    STOPS << self
   end
+
+  def subway_list
+    subway_stops = MTAParse.new.stops.keys
+    subway_stops.each do |subway|
+      @name = puts subway
+    end
+    @name
+  end 
 
   def find_by_name(input)
-    #match case
-    input = MtaCLI.get_user_input
-    name = MTAParse.new
-    help = MtaCLI.help
-    #check the hash
-      #given the user's input check the keys
-        #if one of the keys match 
-      if input == name.keys(input)
-      elsif input != name.keys(input)
-        puts "You're an idiot."
-      elsif input == input(MtaCLI.help)
-        options
-      else
-        raise StandError
-      end
-    #from the hash
+    MTACli.subway_input(input)
   end
 
-  def self.list_of_stops
-    STOPS.count
+  def list_of_stops
+
   end 
 
   def number_of_stops_for_user
@@ -41,14 +31,13 @@ require 'pry'
 
 
   def add_origin(origin)
-    subway_hash = MTAParse.new.stops.keys
-    subway_hash.each do |subway|
-      origin = MTACli.get_user_input
-      if origin == subway
-        STOPS << origin
-      else
-      end
-    end 
+    # subway_hash = MTAParse.new.stops.keys
+    # subway_hash.each do |subway|
+    #   origin = MTACli.get_user_input
+    #   if origin == subway
+    #     STOPS << origin
+    #   else
+    #   end 
   end
 
   def add_destination(destination)
